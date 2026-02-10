@@ -79,6 +79,11 @@ function main() {
     console.log(`\n📦 Deploying ${siteDir} → branch: ${branchName}`);
 
     try {
+      // Copy site files to a temp directory BEFORE any git operations
+      // (git rm can destroy files in output/ if they were accidentally tracked)
+      const tmpDir = path.join(require('os').tmpdir(), `deploy-${siteDir}-${Date.now()}`);
+      copyDirRecursive(sitePath, tmpDir);
+
       // Check if branch exists
       const branchExists = run(`git show-ref --verify --quiet refs/heads/${branchName}`, {
         cwd: PROJECT_ROOT,
@@ -117,8 +122,11 @@ function main() {
         }
       }
 
-      // Copy generated site files to project root
-      copyDirRecursive(sitePath, PROJECT_ROOT);
+      // Copy site files from temp directory to project root
+      copyDirRecursive(tmpDir, PROJECT_ROOT);
+
+      // Clean up temp directory
+      fs.rmSync(tmpDir, { recursive: true });
 
       // Write .gitignore to prevent output/ and node_modules/ from being committed
       fs.writeFileSync(path.join(PROJECT_ROOT, '.gitignore'), 'output/\nnode_modules/\n.DS_Store\n');
