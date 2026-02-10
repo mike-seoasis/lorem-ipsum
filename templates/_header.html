@@ -1,0 +1,26 @@
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<!-- Logo -->
+<div class="flex-shrink-0 flex items-center">
+<a class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white uppercase" href="/">{{brand_name}}</a>
+</div>
+<!-- Nav Links -->
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="/collections/{{collection_slug}}.html">{{collection_title}}</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="/blog/{{blog1_slug}}.html">Blog</a>
+</div>
+<!-- Icons -->
+<div class="flex items-center space-x-5 text-slate-700 dark:text-slate-300">
+<a class="hover:text-primary transition-colors flex items-center" href="#">
+<span class="material-icons-outlined">search</span>
+</a>
+<a class="hover:text-primary transition-colors flex items-center relative" href="#">
+<span class="material-icons-outlined">shopping_bag</span>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+</a>
+<button class="md:hidden">
+<span class="material-icons-outlined text-2xl">menu</span>
+</button>
+</div>
+</nav>
+</header>

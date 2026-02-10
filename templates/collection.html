@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>{{collection_title}} | {{brand_name}}</title>
+<meta name="description" content="{{collection_meta_description}}"/>
+<link rel="canonical" href="https://{{domain}}/collections/{{collection_slug}}.html"/>
+<meta property="og:title" content="{{collection_title}} | {{brand_name}}"/>
+<meta property="og:description" content="{{collection_meta_description}}"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://{{domain}}/collections/{{collection_slug}}.html"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="{{collection_title}} | {{brand_name}}"/>
+<meta name="twitter:description" content="{{collection_meta_description}}"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "{{primary_color}}",
+        "background-light": "#f6f7f8",
+        "background-dark": "#101922",
+      },
+      fontFamily: {
+        "display": ["Inter", "sans-serif"]
+      },
+      borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+    },
+  },
+}
+</script>
+<style>
+.product-card .add-to-cart-btn {
+  opacity: 0; transform: translateY(10px); transition: all 0.3s ease;
+}
+.product-card:hover .add-to-cart-btn {
+  opacity: 1; transform: translateY(0);
+}
+.product-card:hover .product-image { transform: scale(1.05); }
+.product-image-container { overflow: hidden; }
+.product-image { transition: transform 0.5s ease; }
+</style>
+<script type="application/ld+json">
+{{collection_schema}}
+</script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+{{HEADER}}
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<!-- Breadcrumbs & Title Section -->
+<div class="mb-8">
+<nav aria-label="Breadcrumb" class="flex items-center text-sm text-slate-500 dark:text-slate-400 mb-4">
+<ol class="flex items-center space-x-2">
+<li><a class="hover:text-primary" href="/">Home</a></li>
+<li><span class="material-icons text-xs">chevron_right</span></li>
+<li><a class="hover:text-primary" href="#">Shop</a></li>
+<li><span class="material-icons text-xs">chevron_right</span></li>
+<li class="text-primary font-medium">{{collection_title}}</li>
+</ol>
+</nav>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="text-3xl font-bold tracking-tight">{{collection_title}}</h1>
+<p class="mt-2 text-slate-600 dark:text-slate-400">{{collection_description}}</p>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-sm font-medium text-slate-500">Showing 6 products</span>
+<div class="relative group">
+<select class="appearance-none bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg pl-4 pr-10 py-2 text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none cursor-pointer">
+<option>Sort By: Newest</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+<option>Most Popular</option>
+</select>
+<span class="material-icons absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Sidebar Filters -->
+<aside class="w-full lg:w-64 flex-shrink-0">
+<div class="sticky top-24 space-y-8">
+<div>
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">Categories</h3>
+<ul class="space-y-3">
+<li><label class="flex items-center group cursor-pointer"><input checked class="rounded border-slate-300 dark:border-slate-700 text-primary focus:ring-primary w-4 h-4" type="checkbox"/><span class="ml-3 text-sm text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">All Products</span></label></li>
+<li><label class="flex items-center group cursor-pointer"><input class="rounded border-slate-300 dark:border-slate-700 text-primary focus:ring-primary w-4 h-4" type="checkbox"/><span class="ml-3 text-sm text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Lorem Ipsum</span></label></li>
+<li><label class="flex items-center group cursor-pointer"><input class="rounded border-slate-300 dark:border-slate-700 text-primary focus:ring-primary w-4 h-4" type="checkbox"/><span class="ml-3 text-sm text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Dolor Sit</span></label></li>
+<li><label class="flex items-center group cursor-pointer"><input class="rounded border-slate-300 dark:border-slate-700 text-primary focus:ring-primary w-4 h-4" type="checkbox"/><span class="ml-3 text-sm text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Amet Consectetur</span></label></li>
+</ul>
+</div>
+<div>
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">Price Range</h3>
+<div class="space-y-4">
+<input class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-primary" max="500" min="0" type="range" value="350"/>
+<div class="flex items-center justify-between gap-4">
+<div class="flex-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded px-3 py-1.5 text-sm text-slate-600 dark:text-slate-400">$0</div>
+<div class="text-slate-400">&mdash;</div>
+<div class="flex-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded px-3 py-1.5 text-sm text-slate-600 dark:text-slate-400">$350</div>
+</div>
+</div>
+</div>
+<button class="w-full py-3 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 font-semibold text-sm rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+Clear All Filters
+</button>
+</div>
+</aside>
+<!-- Product Grid -->
+<div class="flex-1">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Featured Product Card (links to product page) -->
+<a href="/products/{{product_slug}}.html" class="product-card group relative">
+<div class="product-image-container aspect-[3/4] rounded-xl bg-slate-200 relative mb-4">
+<img alt="{{product_name}}" class="product-image w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALXi6IDEl_yURLxtpqA7cgRwbpxgSUUwNzW0_w0Jdykhd7F1Mt0dQHM3zwW417fybv6isuaYl2gTUHwu9hNsvNlr2Iat1GKgd0bg28e2rls3AQZQypmfM8CqF8pLYNiZSPCem8-pZ52gwluZCqYHAXSbDtNrhbXRtN2eBE8aV2CVuey-17TTFByQVFH7OdXOLWaIQ4JDTOR0L3HEay9cxO5wBwUBNYALGLGxXRatfm4kN8PNNsJWIYb8OG-cRWqzS1BAP3KJANU_A"/>
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<span class="add-to-cart-btn w-full bg-primary text-white py-3 rounded-lg font-semibold flex items-center justify-center gap-2 shadow-lg shadow-primary/30">
+<span class="material-icons text-sm">shopping_cart</span>
+<span>View Product</span>
+</span>
+</div>
+<span class="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest">Featured</span>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-slate-800 dark:text-slate-200 group-hover:text-primary transition-colors cursor-pointer">{{product_name}}</h3>
+</div>
+<p class="text-slate-500 text-sm">{{primary_keyword}}</p>
+<p class="font-bold text-lg text-slate-900 dark:text-white">{{product_price}}</p>
+</div>
+</a>
+<!-- Lorem Product 2 -->
+<div class="product-card group relative">
+<div class="product-image-container aspect-[3/4] rounded-xl bg-slate-200 relative mb-4">
+<img alt="Lorem ipsum product" class="product-image w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsJloYWgGXOqG_uumZQN_5xq4tm6PiYEty9QXAJsjCp1CKT3JOSZi66UKShrM_Qxv4n8YmZ1PyFzr7tzXYVIXHMmZQ6vyrZP9qAv2hLAmL8hU0SofJmw31Uups8XmSr2do7oMQOAo2CA1xQUzPItlagAh6ZgPttgj-PUqVdI_wreo6oqs7immPmZ-ppfDQgXAOYvJJEhpW_W1i-lcr7fefTjq10mEV1US7oYCXOoJ2YV2ItKigmqnrNuJgmtPcYFQ_J48ZWHbOHVo"/>
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="space-y-1">
+<h3 class="font-bold text-slate-800 dark:text-slate-200">Dolor Sit Amet Pro</h3>
+<p class="text-slate-500 text-sm">Consectetur</p>
+<p class="font-bold text-lg text-slate-900 dark:text-white">$45.00</p>
+</div>
+</div>
+<!-- Lorem Product 3 -->
+<div class="product-card group relative">
+<div class="product-image-container aspect-[3/4] rounded-xl bg-slate-200 relative mb-4">
+<img alt="Lorem ipsum product" class="product-image w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZCM85WM1_119G0gj8IT2Z9geiXiUGLtcKM2Iez4qx7JSF9gjCqC_clU8TJ6viGc5mJBRyonqN0t9KHFzZXDBRrGX4HQ8U--scSE-Ed1417LL_CN7Tufqpq_E6OPGMoCQ5tjk4mZdfp4Yt2RJwqnqFvGjQYxISHu0VO-woGOAf0rInZp3J_ZckBgMRxVm4cehI6FRoDrDix2KdedYCHHoWZ1K_w0bpmLi0XH2AfPmTleXZvQ2FQv4yCV29gwKAEaL9xfYUrk_tndU"/>
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="absolute top-4 left-4 bg-emerald-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest">Sale</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-bold text-slate-800 dark:text-slate-200">Adipiscing Elite Max</h3>
+<p class="text-slate-500 text-sm">Tempor</p>
+<div class="flex items-center gap-2">
+<span class="font-bold text-lg text-slate-900 dark:text-white">$129.00</span>
+<span class="text-sm text-slate-400 line-through">$185.00</span>
+</div>
+</div>
+</div>
+<!-- Lorem Product 4 -->
+<div class="product-card group relative">
+<div class="product-image-container aspect-[3/4] rounded-xl bg-slate-200 relative mb-4">
+<img alt="Lorem ipsum product" class="product-image w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMokg3yZguJpDQkKRalDvUvLOQa4Jps8jtw53i7furTrWX5wLKnXBH2kmDNRI0U0JkMHo3IPFLpAayW8brRgKcO3Afcvg1L4WU-a3fXIJ7LX2EXB7JbxQY_keF_giT0rMmfzKyKDlupEfhh4pci8pWJZamN7f3nRjtydUP3g6QMG1Gcj_JNbbLQH_5A_jIzANFCb5D-LQvDFWzn4N7qmF7YgZ_VmjCP0NWopI_ZpgpYFlclPnpx7rRR_wOKc0YeVRIqyUftN-8LIc"/>
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="space-y-1">
+<h3 class="font-bold text-slate-800 dark:text-slate-200">Incididunt Labore</h3>
+<p class="text-slate-500 text-sm">Magna</p>
+<p class="font-bold text-lg text-slate-900 dark:text-white">$98.00</p>
+</div>
+</div>
+<!-- Lorem Product 5 -->
+<div class="product-card group relative">
+<div class="product-image-container aspect-[3/4] rounded-xl bg-slate-200 relative mb-4">
+<img alt="Lorem ipsum product" class="product-image w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPUxv9NrDH83Xppyg0HOlR4q9qEn6jM5UVeqLh8ZURVnOdRgpJ42Dm7YOCBxukiVK-3D0dqW8zp8n4rmCiphAnwUuBHxKdSt0CEfbMF380461gJJYuzdUphf0cdHXubNDULFT1m53ZVXjw_yG8MD4pbDtDl5K_RlHKnBHeta9ZN62uamnEhyImFwvqNo3kw1To6P3Kq87LeZatS-FZNtc2B1E3HQ70i0tG86lu8rdQrUxLe4KbWTpQUSDm7-d1pw3YOArtRLJXkvk"/>
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="space-y-1">
+<h3 class="font-bold text-slate-800 dark:text-slate-200">Veniam Nostrud</h3>
+<p class="text-slate-500 text-sm">Exercitation</p>
+<p class="font-bold text-lg text-slate-900 dark:text-white">$75.00</p>
+</div>
+</div>
+<!-- Lorem Product 6 -->
+<div class="product-card group relative">
+<div class="product-image-container aspect-[3/4] rounded-xl bg-slate-200 relative mb-4">
+<img alt="Lorem ipsum product" class="product-image w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNYBwlhNguAZez2ceLhl3abG1qLPegm6WnPZbc4LBNJJtJIhrlso9GY-Vfvrhb_oQiCD__a1qLy1Oc3R8sbXS2J1ob2OV_N1VjxdJdeDT2OoP1tzqV7OJw_LleR64l5xc4clIMBMt3grBQp5GYXywfbCvyWkH05V9aWd7N3L9TVVFUVI1tgyPv8ybEdLclVglV1J-kbSIfBiuFVWmdEbzR28UeTdO5hF7aFqhzMe48i7cLL0g2Us3S1KysO7Qf3d6cNae19YPe0uU"/>
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="space-y-1">
+<h3 class="font-bold text-slate-800 dark:text-slate-200">Ullamco Laboris</h3>
+<p class="text-slate-500 text-sm">Nisi Ut</p>
+<p class="font-bold text-lg text-slate-900 dark:text-white">$115.00</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+{{FOOTER}}
+</body></html>

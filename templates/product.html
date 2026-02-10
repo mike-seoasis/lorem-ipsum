@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>{{product_meta_title}}</title>
+<meta name="description" content="{{product_meta_description}}"/>
+<link rel="canonical" href="https://{{domain}}/products/{{product_slug}}.html"/>
+<meta property="og:title" content="{{product_meta_title}}"/>
+<meta property="og:description" content="{{product_meta_description}}"/>
+<meta property="og:type" content="product"/>
+<meta property="og:url" content="https://{{domain}}/products/{{product_slug}}.html"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="{{product_meta_title}}"/>
+<meta name="twitter:description" content="{{product_meta_description}}"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "{{primary_color}}",
+        "background-light": "#f6f7f8",
+        "background-dark": "#101922",
+      },
+      fontFamily: {
+        "display": ["Inter", "sans-serif"]
+      },
+      borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+    },
+  },
+}
+</script>
+<script type="application/ld+json">
+{{product_schema}}
+</script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+{{HEADER}}
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<!-- Breadcrumbs -->
+<nav aria-label="Breadcrumb" class="flex mb-8 text-sm text-slate-500 dark:text-slate-400">
+<ol class="flex items-center space-x-2">
+<li><a class="hover:text-primary transition-colors" href="/">Home</a></li>
+<li><span class="material-icons text-xs">chevron_right</span></li>
+<li><a class="hover:text-primary transition-colors" href="/collections/{{collection_slug}}.html">{{collection_title}}</a></li>
+<li><span class="material-icons text-xs">chevron_right</span></li>
+<li class="font-medium text-slate-900 dark:text-white">{{product_name}}</li>
+</ol>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:items-start">
+<!-- Left Side: Image Gallery -->
+<div class="space-y-4">
+<div class="grid grid-cols-12 gap-4">
+<!-- Thumbnails Column -->
+<div class="col-span-2 space-y-4">
+<button class="aspect-[3/4] w-full rounded-lg overflow-hidden border-2 border-primary">
+<img class="w-full h-full object-cover" alt="{{product_name}} view 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg_f6SZhLOQe1RjGZVvozvihsY1nqjlbgcrp0Vobga97L7EPqlfkBcE2V_uCdHi_Mb0yiIkI88mzlzX0WE-LLTcB7OxG5xa5pmwnH2a_B-bOy21KRXC5yw37cwBk8CGUhi7hzh2ttLJZUwi_Mcj6syLVaVJnRlOps9TeRo-hbt0NZWPk3GEV88-r1Enq8EpcoJe1T0sJUmzlTmf9nBCZEwMOMKOSjHWRU2oA9JWJUun5EGUISC93FhHzGAAYPMYNf36T4Uvf-R17Y"/>
+</button>
+<button class="aspect-[3/4] w-full rounded-lg overflow-hidden border-2 border-transparent hover:border-slate-300 transition-colors">
+<img class="w-full h-full object-cover" alt="{{product_name}} view 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxbEm4tC_Gled7d_KYY4QeaSHtTokInzr-8D-JmPCFuCGushvVaZS6um9ILCQyHWc9-2a1_49YEeKtJrniE6R4sLbLDvRX9oVJCFLyunj--v8C1BWLSVCAo66tGHflCcJcfCtx7rAGlfCdqSrU7bUzzOXyAk7Q1HQhsZFngmiohbP1WtXVK21mIEPNfOOTezyp88GKZCZby2PgYPROpSNsku9TkEJShty1LCsuJGHPC1XbWysDD1357PzUvlYVVqgyhXIZtGnfvc4"/>
+</button>
+<button class="aspect-[3/4] w-full rounded-lg overflow-hidden border-2 border-transparent hover:border-slate-300 transition-colors">
+<img class="w-full h-full object-cover" alt="{{product_name}} view 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLGFFkVT2w1djAQlJXu4o7C_9QqJoykVvzda0CvyKe93-53UTtOu7FTvhuimicp9He0BS42zPnKT35MXo1y58_3QQXXXMyo9FY7lfK_yMXabtDFEQScVIUkm1N1THG2nHS8POS_qO6SqA3pD-FeP91unuwJ1dFqM9txqO9ZHykZ-lPhgz5O3h9E6lmns8jYrZU8EJBZuDBLm-zS9kXcyYW4jACVMP5R8bU9ZEgSCtcyUBCPAeyRm1TR9ctMyGZErAbpeJJ2Q6yqyo"/>
+</button>
+<button class="aspect-[3/4] w-full rounded-lg overflow-hidden border-2 border-transparent hover:border-slate-300 transition-colors">
+<img class="w-full h-full object-cover" alt="{{product_name}} view 4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRXQZ3nIcB6FacDdeLEPvkmuGO7UcHR9QCuugBwMyZvui-Xq-Kj3ybjI5ga3LxJhMNy4YAj9AK8HFwqRCCSeJjsMd6kpMm7zcjmljz45o159GPKvqBoKrL8R-D_-pXJUs6SNQ9QK7_EQ_wn6Ox9ClZubOWSEjG6vqcFHe7AOMWoaeJDzSJTu1dSSUaK7ai-6GdRqOR4FmNV5c8UpVxjYoA9H8_G3SiLhbjixFgb6unTMfuG5nvS7zKgrswlmzRgITv4pDk2UGK6NY"/>
+</button>
+</div>
+<!-- Main Image Display -->
+<div class="col-span-10">
+<div class="aspect-[3/4] rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800">
+<img class="w-full h-full object-cover" alt="{{product_name}}" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOrg02i1Ycy_9sSMTYCAFWeQjOcul-sW3QPqdbTWMoCHhKzMAC_HUSctKHsosjnDan45QE2E0SkSeRaZtmEZR503lSnN3ZZ86Pr7zB0I-dVF4dlunOP1TsopzwDNhxqWZdFi8CQeDFwqKcOQya6ZqGxBe4Xq-jsK1NFeqcJDoUKmZ-U5OMSTihs_zpbw1k7U-GvRJ8_RBK2nCQQYu7LPdnI0Wa2WqU_hL5OtPrPcCG5_OUabooXLhOpaAp5hn9kPBO5ZkMcIS6spY"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Side: Product Details & Purchase (Sticky) -->
+<div class="lg:sticky lg:top-24 space-y-8">
+<div class="space-y-4">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold tracking-widest text-primary uppercase">{{primary_keyword}}</span>
+<div class="flex items-center text-amber-400">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star_half</span>
+<span class="ml-2 text-xs text-slate-500 font-medium">(128 reviews)</span>
+</div>
+</div>
+<h1 class="text-4xl font-bold tracking-tight">{{product_name}}</h1>
+<div class="flex items-baseline gap-4">
+<p class="text-3xl font-semibold text-primary">{{product_price}}</p>
+{{product_original_price_html}}
+</div>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed max-w-lg">
+{{product_description}}
+</p>
+</div>
+<!-- Product Options -->
+<div class="space-y-6">
+<!-- Size Grid -->
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<label class="text-sm font-bold uppercase tracking-wider">Options</label>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="py-3 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-primary transition-colors text-sm font-medium">Standard</button>
+<button class="py-3 border-2 border-primary rounded-lg text-sm font-bold text-primary bg-primary/5">Premium</button>
+<button class="py-3 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-primary transition-colors text-sm font-medium">Deluxe</button>
+<button class="py-3 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-primary transition-colors text-sm font-medium">Bundle</button>
+</div>
+</div>
+<!-- Quantity & CTA -->
+<div class="space-y-4 pt-4">
+<div class="flex gap-4">
+<div class="w-32 flex items-center border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+<button class="flex-1 h-12 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800"><span class="material-icons text-sm">remove</span></button>
+<span class="flex-1 text-center font-bold">1</span>
+<button class="flex-1 h-12 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800"><span class="material-icons text-sm">add</span></button>
+</div>
+<button class="flex-1 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2 px-8">
+<span class="material-icons">shopping_cart</span>
+ADD TO CART
+</button>
+</div>
+<button class="w-full py-3 border border-slate-200 dark:border-slate-700 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-icons text-rose-500">favorite_border</span>
+Add to Wishlist
+</button>
+</div>
+</div>
+<!-- Accordions -->
+<div class="border-t border-slate-200 dark:border-slate-800 pt-6 space-y-2">
+<div class="border-b border-slate-200 dark:border-slate-800">
+<button class="w-full py-4 flex items-center justify-between text-left font-bold text-sm tracking-wider uppercase group">
+Product Details
+<span class="material-icons text-slate-400 group-hover:text-primary transition-colors">add</span>
+</button>
+<div class="pb-6 text-sm text-slate-600 dark:text-slate-400 space-y-3 leading-relaxed">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+{{product_features_html}}
+</div>
+</div>
+<div class="border-b border-slate-200 dark:border-slate-800">
+<button class="w-full py-4 flex items-center justify-between text-left font-bold text-sm tracking-wider uppercase group">
+Shipping &amp; Returns
+<span class="material-icons text-slate-400 group-hover:text-primary transition-colors">add</span>
+</button>
+<div class="hidden pb-6 text-sm text-slate-600 dark:text-slate-400">
+Free standard shipping on all orders over $50. Returns accepted within 30 days of purchase in original condition.
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Related Blog Posts -->
+<section class="mt-24 border-t border-slate-200 dark:border-slate-800 pt-16">
+<h2 class="text-2xl font-bold mb-8">Learn More About {{primary_keyword}}</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<a href="/blog/{{blog1_slug}}.html" class="group cursor-pointer">
+<div class="aspect-video rounded-xl overflow-hidden bg-white mb-4 relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="{{blog1_title}}" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxlBrRBHmNsKLQv8jxNnaIXhVIePjOUOY1vo-T46Ft-xDtZOEjOUkxwVhkes2XnHEaC8SRpz2gXvD9Z2JFAeezDllz0AvEZijIlipxCHjXdW2BcFuajB6F4aYUyMjxlpthrcjEwaY_J8osQUi2UZ59W317IZ9Gbc87w4FH0tG1V7PjUGfrOxPiObMQe37FjYK9K3hk1KISpBA4Tlv8sjIHLSeWnFtovIL2A66klZAfAb6kA-jqLunEZ7QnorNYFN5qkIBFWoPYeSM"/>
+</div>
+<h3 class="font-bold text-sm mb-1">{{blog1_title}}</h3>
+<p class="text-slate-500 text-sm">5 min read</p>
+</a>
+<a href="/blog/{{blog2_slug}}.html" class="group cursor-pointer">
+<div class="aspect-video rounded-xl overflow-hidden bg-white mb-4 relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="{{blog2_title}}" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWh8n8YW17W8IRShA4_uS108kxWnl4Zat5nOCPrfSkoesxFHg9JB8R_kIloTO6mUhKLo2MynEbcaYIH7PRq1eLxyDSIjktNPgQGZRWPyMJzVwSstbw1XsxJwBLXX8psi_lx9y_KzdGSEsuod0DpmBU0czSmVZRCruSLP0cJrGmoOwUgKLrzttWLoBFkQ8o9dmV3mUb3cX0ov25GpU4wbmdOyaGYvpXJotDg_Wtx-Tr0G319rq2yckYhhhGIZWLfDLFpQeUuU199s4"/>
+</div>
+<h3 class="font-bold text-sm mb-1">{{blog2_title}}</h3>
+<p class="text-slate-500 text-sm">5 min read</p>
+</a>
+<a href="/blog/{{blog3_slug}}.html" class="group cursor-pointer">
+<div class="aspect-video rounded-xl overflow-hidden bg-white mb-4 relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="{{blog3_title}}" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW-ht3U9GnECzgEwNyM6Z0ZKLNdGTaDSO6GjG7tkhUdPcd7pq8kniIK_viNlUoba66_2qiQAswIJLCac6VbEooLPuy5SfSRJNLwlZjwPOs_N_OoBedXmGsSug_CMQ0IbNWm_a-u3sXerli-14yTfB5k5hPoGeNrDibGe8kZ7LHiF8Dv-2Sbu_H69EPnBh4DfjnY8xyMFW7Vn2Ux-pg1XfBxguJSJ6Lx1vpMxAyN4KA6E7SotUv_RQzDvs5cD6mnXUP7_M36jj_FbE"/>
+</div>
+<h3 class="font-bold text-sm mb-1">{{blog3_title}}</h3>
+<p class="text-slate-500 text-sm">5 min read</p>
+</a>
+</div>
+</section>
+</main>
+{{FOOTER}}
+</body></html>

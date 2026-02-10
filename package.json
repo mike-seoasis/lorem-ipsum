@@ -1,0 +1,9 @@
+{
+  "name": "lorem-ipsum-seo-generator",
+  "version": "1.0.0",
+  "description": "Static e-commerce site generator for SEO testing",
+  "scripts": {
+    "generate": "node generate.js",
+    "deploy": "node deploy.js"
+  }
+}
