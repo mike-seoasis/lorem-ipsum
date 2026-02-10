@@ -97,6 +97,37 @@ function loadTemplate(name) {
   return fs.readFileSync(filePath, 'utf-8');
 }
 
+// ─── Image Path Resolution ──────────────────────────────────────────────────
+
+function resolveImagePaths(siteDir) {
+  const imagesDir = path.join(siteDir, 'images');
+  const imageMap = {
+    'image_hero': 'hero',
+    'image_product_main': 'product-main',
+    'image_product_2': 'product-2',
+    'image_product_3': 'product-3',
+    'image_product_4': 'product-4',
+    'image_product_5': 'product-5',
+    'image_collection_1': 'collection-1',
+    'image_collection_2': 'collection-2',
+    'image_blog_hero': 'blog-hero',
+  };
+
+  const paths = {};
+  for (const [key, name] of Object.entries(imageMap)) {
+    if (fs.existsSync(imagesDir)) {
+      const files = fs.readdirSync(imagesDir).filter(f => f.startsWith(name + '.'));
+      if (files.length > 0) {
+        paths[key] = '/images/' + files[0];
+        continue;
+      }
+    }
+    paths[key] = '/images/' + name + '.jpg';
+  }
+
+  return paths;
+}
+
 // ─── Schema Generators ──────────────────────────────────────────────────────
 
 function generateOrganizationSchema(data) {
@@ -255,13 +286,13 @@ function generatePackageJson(domainSlug) {
 
 // ─── Related Articles HTML Generator ────────────────────────────────────────
 
-function generateRelatedArticlesHTML(blogs, currentSlug) {
+function generateRelatedArticlesHTML(blogs, currentSlug, blogImagePath) {
   return blogs
     .filter(b => b.slug !== currentSlug)
     .map(b => `<article class="group">
 <a class="block" href="/blog/${b.slug}.html">
 <div class="aspect-video rounded-lg overflow-hidden mb-3">
-<img alt="${b.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpQgVXG2DOhrEmtDkSRBZCBIfjLx9s4rar9NC0NiPHU9Ha4oWocY9nWT6tTSb00JxAgpddQdZA07JtTUG5ZLip1GVkybzxhqY7yfghK12vo7suq4hLOK8iQFlVZb2bYXsIZeU0KeD_4UmvfkjyMFIiO3aNnn5ziYujOMQ9s33lFuR5XdKfYvdUP23jadO2b6t0Tont5i4ywqpHFr75AOb7lBL50jvcFCtdRGCov0l62d2WEpHSJNKgpBWOuYSzXOECStDvyG-VFeY"/>
+<img alt="${b.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="${blogImagePath}"/>
 </div>
 <h5 class="font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors leading-snug">${b.title}</h5>
 <p class="text-xs text-slate-400 mt-2">5 min read</p>
@@ -340,6 +371,10 @@ function generateSite(row) {
   fs.mkdirSync(path.join(siteDir, 'products'), { recursive: true });
   fs.mkdirSync(path.join(siteDir, 'blog'), { recursive: true });
 
+  // Resolve image paths (detects .jpg/.png from generate-images.js output)
+  const imagePaths = resolveImagePaths(siteDir);
+  Object.assign(data, imagePaths);
+
   // ─── Generate Homepage ───────────────────────────────────────────
   const homepageHTML = render(homepageTpl, data);
   fs.writeFileSync(path.join(siteDir, 'index.html'), homepageHTML);
@@ -362,7 +397,7 @@ function generateSite(row) {
     blogData.blog_meta_description = blog.meta;
     blogData.blog_content = blog.content;
     blogData.blog_schema = generateArticleSchema(data, blog.title, blog.slug, blog.meta);
-    blogData.sidebar_related_articles = generateRelatedArticlesHTML(blogs, blog.slug);
+    blogData.sidebar_related_articles = generateRelatedArticlesHTML(blogs, blog.slug, data.image_blog_hero);
 
     const blogHTML = render(blogTpl, blogData);
     fs.writeFileSync(path.join(siteDir, 'blog', `${blog.slug}.html`), blogHTML);
