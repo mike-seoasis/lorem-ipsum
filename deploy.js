@@ -128,7 +128,7 @@ function main() {
       run(`git commit -m "${commitMsg}" --allow-empty`, { cwd: PROJECT_ROOT });
 
       // Push
-      run(`git push origin ${branchName} --force`, { cwd: PROJECT_ROOT });
+      run(`git push origin ${branchName}`, { cwd: PROJECT_ROOT });
 
       results.push({ siteDir, branchName, status: 'success' });
       console.log(`  ✅ Pushed to branch: ${branchName}`);
