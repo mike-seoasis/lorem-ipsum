@@ -123,6 +123,8 @@ function main() {
       }
 
       // Copy site files from temp directory to project root
+      const tmpFiles = fs.readdirSync(tmpDir);
+      console.log(`  📂 Temp dir contents: ${tmpFiles.join(', ')}`);
       copyDirRecursive(tmpDir, PROJECT_ROOT);
 
       // Clean up temp directory
@@ -130,6 +132,10 @@ function main() {
 
       // Write .gitignore to prevent output/ and node_modules/ from being committed
       fs.writeFileSync(path.join(PROJECT_ROOT, '.gitignore'), 'output/\nnode_modules/\n.DS_Store\n');
+
+      // Debug: list what's in PROJECT_ROOT before staging
+      const rootAfterCopy = fs.readdirSync(PROJECT_ROOT).filter(f => f !== '.git');
+      console.log(`  📂 Root after copy: ${rootAfterCopy.join(', ')}`);
 
       // Stage all files
       run('git add -A', { cwd: PROJECT_ROOT });
