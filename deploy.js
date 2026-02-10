@@ -120,6 +120,9 @@ function main() {
       // Copy generated site files to project root
       copyDirRecursive(sitePath, PROJECT_ROOT);
 
+      // Write .gitignore to prevent output/ and node_modules/ from being committed
+      fs.writeFileSync(path.join(PROJECT_ROOT, '.gitignore'), 'output/\nnode_modules/\n.DS_Store\n');
+
       // Stage all files
       run('git add -A', { cwd: PROJECT_ROOT });
 
